@@ -1,3 +1,15 @@
 <resources>
     <string name="app_name">MediaSample</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="login">Login</string>
+    <string name="no_internet_access">No Internet access</string>
+    <string name="send">Send</string>
+    <string name="cancel">Cancel</string>
+    <string name="enter_email_error">Please enter email</string>
+    <string name="linear_layout_manager" translatable="false">com.pinket.shopper.ui.widget.recyclerview.layout_manager.LinearManager</string>
+    <string name="horizontal_linear_layout_manager" translatable="false">com.pinket.shopper.ui.widget.recyclerview.layout_manager.HorizontalLinearManager</string>
+    <string name="grid_layout_manager" translatable="false">com.pinket.shopper.ui.widget.recyclerview.layout_manager.GridManager</string>
+
+
 </resources>

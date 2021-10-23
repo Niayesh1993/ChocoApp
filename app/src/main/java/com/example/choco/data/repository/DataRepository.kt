@@ -1,0 +1,44 @@
+package com.example.choco.data.repository
+
+import com.example.choco.data.model.Login
+import com.example.choco.data.model.LoginResult
+import com.example.choco.data.model.Product
+import com.example.choco.utils.ApiResult
+
+class DataRepository(private val remoteDataSource: DataSource) {
+
+    suspend fun login(login: Login): ApiResult<LoginResult> {
+        return remoteDataSource.login(login)
+    }
+
+    suspend fun getProducts(token: String): ApiResult<ArrayList<Product>> {
+        return remoteDataSource.getProduct(token)
+    }
+
+    private fun saveCookie(cookieResult: ApiResult<String>): ApiResult<String> {
+        if (cookieResult is ApiResult.Success) {
+            saveTokens(cookieResult.value)
+        }
+        return cookieResult
+    }
+
+    private fun saveTokens(token: String) {
+
+//        appPreferences.apply {
+//            accessToken = token
+//        }
+    }
+
+    companion object {
+        @Volatile
+        private var INSTANCE: DataRepository? = null
+
+        fun getInstance(remoteDataSource: DataSource): DataRepository {
+            return INSTANCE ?: synchronized(this) {
+                INSTANCE
+                    ?: DataRepository(remoteDataSource
+                    ).also { INSTANCE = it }
+            }
+        }
+    }
+}

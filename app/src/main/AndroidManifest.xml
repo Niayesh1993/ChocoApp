@@ -1,26 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.mediasample">
+    package="com.example.choco">
 
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <application
-        android:name=".app.MediaApplication"
+        android:name="com.example.choco.di.MediaApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:usesCleartextTraffic="true"
-        android:theme="@style/Theme.MediaSample">
-        <activity android:name=".ui.detail.view.DetailActivity"></activity>
-        <activity android:name=".ui.main.view.MainActivity">
+        android:theme="@style/Theme.MediaSample"
+        android:usesCleartextTraffic="true">
+        <activity
+            android:name="com.example.choco.ui.login.LoginActivity"
+            android:screenOrientation="portrait"
+            android:exported="true">
+        </activity>
+
+        <activity
+            android:name="com.example.choco.ui.splash.SplashActivity"
+            android:screenOrientation="portrait"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity android:name="com.example.choco.ui.main.MainActivity"
+            android:screenOrientation="portrait">
+
         </activity>
     </application>
 

@@ -6,7 +6,7 @@
     app:startDestination="@id/mainActivity">
     <activity
         android:id="@+id/mainActivity"
-        android:name="com.example.mediasample.ui.main.view.MainActivity"
+        android:name="com.example.choco.ui.main.MainActivity"
         android:label="activity_main"
         tools:layout="@layout/activity_main">
         <action
@@ -15,7 +15,7 @@
     </activity>
     <activity
         android:id="@+id/detailActivity"
-        android:name="com.example.mediasample.ui.detail.view.DetailActivity"
+        android:name="com.example.choco.ui.detail.view.DetailActivity"
         android:label="activity_detail"
         tools:layout="@layout/activity_detail" />
 </navigation>
