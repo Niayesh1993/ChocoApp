@@ -3,7 +3,6 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="../../../../layout/custom_preview.xml" value="0.378974358974359" />
         <entry key="..\:/ChocoApp/app/src/main/res/layout/activity_main.xml" value="0.1" />
         <entry key="..\:/ChocoApp/app/src/main/res/layout/item_product.xml" value="0.2234375" />
         <entry key="..\:/MediaWarner/app/src/main/res/layout/activity_login.xml" value="0.176" />
@@ -15,9 +14,6 @@
         <entry key="..\:/MediaWarner/app/src/main/res/layout/layout_snackbar.xml" value="0.2234375" />
         <entry key="..\:/MediaWarner/app/src/main/res/layout/layout_states.xml" value="0.2234375" />
         <entry key="..\:/MediaWarner/app/src/main/res/layout/view_snack_bar.xml" value="0.103125" />
-        <entry key="app/src/main/res/layout/activity_main.xml" value="0.25" />
-        <entry key="app/src/main/res/layout/item_product.xml" value="0.25" />
-        <entry key="app/src/main/res/layout/layout_progress.xml" value="0.3567708333333333" />
       </map>
     </option>
   </component>

@@ -12,7 +12,7 @@ import android.telephony.TelephonyManager
 import androidx.annotation.RequiresApi
 import androidx.core.app.NotificationManagerCompat
 import com.example.choco.BuildConfig
-import com.example.choco.ChocoApplication
+import com.example.choco.di.MediaApplication
 import java.lang.AssertionError
 import java.util.*
 import java.util.concurrent.CountDownLatch
@@ -28,7 +28,7 @@ object Helper {
     @SuppressLint("HardwareIds")
     fun deviceKey(): String {
         return Settings.Secure.getString(
-            ChocoApplication.mContext!!.getContentResolver(),
+            MediaApplication.mContext!!.getContentResolver(),
             Settings.Secure.ANDROID_ID
         )
     }

@@ -36,6 +36,14 @@ object InputHelper {
         return text == null || isEmpty(text.text.toString().trim { it <= ' ' })
     }
 
+    fun isEmpty(text: TextView?): Boolean {
+        return text == null || isEmpty(text.text.toString())
+    }
+
+    fun isEmpty(txt: TextInputLayout?): Boolean {
+        return txt == null || isEmpty(txt.editText)
+    }
+
     fun toString(input: Int): String {
         return Integer.toString(input)
     }
@@ -60,13 +68,74 @@ object InputHelper {
         return if (!isEmpty(`object`)) `object`.toString() else ""
     }
 
+    fun toInteger(text: String): Int? {
+        if (!isEmpty(text)) {
+            try {
+                return text.toInt()
+            } catch (ignored: NumberFormatException) {
+            }
+        }
+        return null
+    }
 
+    fun toLong(textView: TextView): Long {
+        return toLong(toString(textView))
+    }
+
+    fun toLong(text: String): Long {
+        if (!isEmpty(text)) {
+            try {
+                return java.lang.Long.valueOf(text.replace("[^0-9]".toRegex(), ""))
+            } catch (ignored: NumberFormatException) {
+            }
+        }
+        return 0
+    }
+
+    fun toDouble(text: String): Double {
+        if (!isEmpty(text)) {
+            try {
+                return text.toDouble()
+            } catch (ignored: NumberFormatException) {
+            }
+        }
+        return 0.0
+    }
 
     fun equals(s1: String, s2: String): Boolean {
         return (isEmpty(s1) && isEmpty(s2)
                 || !isEmpty(s1) && s1 == s2)
     }
 
+    fun getSafeIntId(id: Long): Int {
+        return if (id > Int.MAX_VALUE) (id - Int.MAX_VALUE).toInt() else id.toInt()
+    }
+
+    fun insertAtCursor(editText: EditText, text: String) {
+        val oriContent = editText.text.toString()
+        val start = editText.selectionStart
+        val end = editText.selectionEnd
+        if (start >= 0 && end > 0 && start != end) {
+            editText.text = editText.text.replace(start, end, text)
+        } else {
+            val index = if (editText.selectionStart >= 0) editText.selectionStart else 0
+            val builder = StringBuilder(oriContent)
+            builder.insert(index, text)
+            editText.setText(builder.toString())
+            editText.setSelection(index + text.length)
+        }
+    }
+
+
+    fun isPhoneNumValid(phoneNum: String): Boolean {
+        return (!isEmpty(phoneNum)
+                && phoneNum.length == 10 && phoneNum.substring(0, 1) == "9")
+    }
+
+    fun isOtpValid(otp: String): Boolean {
+        return (!isEmpty(otp)
+                && otp.length == 5)
+    }
 
     fun isEmailValid(email: String?): Boolean {
         val expression = "^[\\w\\.-]+@([\\w\\-]+\\.)+[A-Z]{2,4}$"
@@ -75,6 +144,39 @@ object InputHelper {
         return matcher.matches()
     }
 
+    fun compareVersionNames(newVersionName: String): Int {
+        return compareVersionNames(BuildConfig.VERSION_NAME, newVersionName)
+    }
+
+    fun compareVersionNames(oldVersionName: String, newVersionName: String): Int {
+        var res = 0
+        val oldNumbers = oldVersionName.split("\\.").toTypedArray()
+        val newNumbers = newVersionName.split("\\.").toTypedArray()
+
+        // To avoid IndexOutOfBounds
+        val maxIndex = Math.min(oldNumbers.size, newNumbers.size)
+        for (i in 0 until maxIndex) {
+            val oldVersionPart = Integer.valueOf(oldNumbers[i])
+            val newVersionPart = Integer.valueOf(newNumbers[i])
+            if (oldVersionPart < newVersionPart) {
+                res = -1
+                break
+            } else if (oldVersionPart > newVersionPart) {
+                res = 1
+                break
+            }
+        }
+
+        // If versions are the same so far, but they have different length...
+        if (res == 0 && oldNumbers.size != newNumbers.size) {
+            res = if (oldNumbers.size > newNumbers.size) 1 else -1
+        }
+        return res
+    }
+
+    fun isEnglishChar(input: String?): Boolean {
+        return Pattern.matches("[a-z A-Z]*[0-9]*", input)
+    }
 
     //--------------------------------------------------------------------------------------------||
     //------------------------------------ InputTypes --------------------------------------------||
@@ -111,6 +213,9 @@ object InputHelper {
     const val textWebPassword = "textWebPassword"
     const val time = "time"
     private var inputTypes: MutableMap<String, Int>? = null
+    fun inputType(inputTypeKey: String): Int {
+        return inputTypes!![inputTypeKey]!!
+    }
 
     init {
         inputTypes = HashMap()

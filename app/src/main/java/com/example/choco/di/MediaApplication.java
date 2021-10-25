@@ -1,4 +1,4 @@
-package com.example.choco;
+package com.example.choco.di;
 
 import android.content.Context;
 
@@ -7,7 +7,7 @@ import androidx.multidex.MultiDexApplication;
 import dagger.hilt.android.HiltAndroidApp;
 
 @HiltAndroidApp
-public class ChocoApplication extends MultiDexApplication {
+public class MediaApplication extends MultiDexApplication {
 
     public static Context mContext;
     @Override

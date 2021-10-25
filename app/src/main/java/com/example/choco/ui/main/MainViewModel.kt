@@ -25,6 +25,11 @@ class MainViewModel @Inject constructor(
     private val _products = MutableLiveData<ArrayList<Product>?>()
     val products: LiveData<ArrayList<Product>?> get() = _products
 
+    private val _notifyItemUpdate = MutableLiveData<Event<Int>>()
+    val notifyItemUpdate: LiveData<Event<Int>> get() = _notifyItemUpdate
+
+    private val _updateItemState = MutableLiveData<UiStateModel>()
+    val updateItemState: LiveData<UiStateModel> get() = _updateItemState
 
     fun loadProducts() {
         _uiState.update(loading = true)

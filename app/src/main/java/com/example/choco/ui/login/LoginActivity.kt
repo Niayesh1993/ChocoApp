@@ -9,7 +9,7 @@ import androidx.core.widget.doAfterTextChanged
 import androidx.lifecycle.Observer
 import com.example.choco_app.ui.widget.MaterialSnackBar
 import com.example.choco.databinding.ActivityLoginBinding
-import com.example.choco.ChocoApplication
+import com.example.choco.di.MediaApplication
 import com.example.choco.ui.main.MainActivity
 import com.example.choco.utils.EventObserver
 import com.example.choco.utils.SettingManager
@@ -29,7 +29,7 @@ class LoginActivity : AppCompatActivity() {
 
         binding.lifecycleOwner = this
         binding.viewmodel = viewModel
-        SettingManager.init(ChocoApplication.mContext)
+        SettingManager.init(MediaApplication.mContext)
 
         observeUiState(viewModel.uiState)
 

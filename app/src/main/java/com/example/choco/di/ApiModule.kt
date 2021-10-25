@@ -59,9 +59,9 @@ class ApiModule {
             .writeTimeout(TIMEOUT_SECONDS, TimeUnit.SECONDS)
             .also {
                 if (Helper.isDebug) {
-                    val httpLoggingInterceptor = HttpLoggingInterceptor()
-                    httpLoggingInterceptor.level = HttpLoggingInterceptor.Level.BODY
-                    it.addInterceptor(httpLoggingInterceptor)
+//                    val httpLoggingInterceptor = HttpLoggingInterceptor()
+//                    httpLoggingInterceptor.level = HttpLoggingInterceptor.Level.BODY
+//                    it.addInterceptor(httpLoggingInterceptor)
                 }
             }
             .build()

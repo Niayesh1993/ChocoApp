@@ -1,30 +1,15 @@
 <resources>
-    <string name="app_name">ChocoApp</string>
+    <string name="app_name">MediaSample</string>
     <string name="email">Email</string>
     <string name="password">Password</string>
     <string name="login">Login</string>
+    <string name="no_internet_access">No Internet access</string>
     <string name="send">Send</string>
     <string name="cancel">Cancel</string>
     <string name="enter_email_error">Please enter email</string>
-    <string name="linear_layout_manager" translatable="false">com.example.choco.ui.widget.recyclerview.LinearManager</string>
-    <string name="appbar_scrolling_view_behavior" translatable="false">com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior</string>
+    <string name="linear_layout_manager" translatable="false">com.pinket.shopper.ui.widget.recyclerview.layout_manager.LinearManager</string>
+    <string name="horizontal_linear_layout_manager" translatable="false">com.pinket.shopper.ui.widget.recyclerview.layout_manager.HorizontalLinearManager</string>
+    <string name="grid_layout_manager" translatable="false">com.pinket.shopper.ui.widget.recyclerview.layout_manager.GridManager</string>
 
-
-    <!--
-        Rest api exception message
-        -->
-    <string name="bad_request">Bad Request</string>
-    <string name="unauthorized">email and password is incorrect, please try again.</string>
-    <string name="forbidden">this service is forbidden.</string>
-    <string name="not_found">the service not found.</string>
-    <string name="method_not_allowed">this method not allowed.</string>
-    <string name="not_acceptable">اطلاعات ورودی برای سرور قابل قبول نمی باشد، لطقا با پشتیبانی تماس برقرار نمائید.</string>
-    <string name="timeout">Time out error.</string>
-    <string name="update_required">Update required.</string>
-    <string name="server_error">Internal server error.</string>
-    <string name="no_internet_access">No Internet access</string>
-    <string name="authorization_timeout">Your password expired.</string>
-    <string name="default_exception_msg">not exception error.</string>
-    <string name="invalid_username_or_password">email and password in invalid،</string>
 
 </resources>

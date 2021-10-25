@@ -26,13 +26,13 @@
                 android:layout_width="100dp"
                 android:layout_height="100dp"
                 android:layout_marginEnd="4dp"
-                android:layout_marginRight="4dp"
                 android:scaleType="centerCrop"
-                android:src="@drawable/bg_no_image"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.0" />
+                app:layout_constraintVertical_bias="0.0"
+                android:layout_marginRight="4dp"
+                android:src="@drawable/image_icon"/>
 
             <ImageView
                 android:id="@+id/order_img"
@@ -42,11 +42,11 @@
                 android:layout_marginRight="108dp"
                 android:scaleType="centerCrop"
                 android:src="@drawable/favorite"
-                android:visibility="gone"
                 app:layout_constraintBottom_toBottomOf="@id/item_image"
                 app:layout_constraintEnd_toEndOf="@id/item_image"
                 app:layout_constraintTop_toTopOf="@id/item_image"
-                app:layout_constraintVertical_bias="1.0">
+                app:layout_constraintVertical_bias="1.0"
+                android:visibility="gone">
 
             </ImageView>
 
@@ -68,29 +68,10 @@
                 tools:text="Title" />
 
             <TextView
-                android:id="@+id/txt_desc"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_margin="5dp"
-                android:padding="5dp"
-                android:textAppearance="?attr/textAppearanceListItem"
-                android:textColor="@color/text_color"
-                android:textSize="11sp"
-                android:textStyle="normal"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/item_image"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/txt_name"
-                app:layout_constraintVertical_bias="0.125"
-                tools:text="description" />
-
-            <TextView
                 android:id="@+id/txt_price"
-                android:layout_width="0dp"
+                android:layout_width="164dp"
                 android:layout_height="wrap_content"
                 android:layout_margin="5dp"
-                android:layout_marginBottom="4dp"
                 android:padding="5dp"
                 android:textAppearance="?attr/textAppearanceListItem"
                 android:textColor="@color/text_color"
@@ -98,9 +79,11 @@
                 android:textStyle="normal"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@+id/item_image"
-                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintHorizontal_bias="0.042"
                 app:layout_constraintStart_toStartOf="parent"
-                tools:text="price" />
+                app:layout_constraintTop_toTopOf="@id/txt_name"
+                app:layout_constraintVertical_bias="0.486"
+                tools:text="Author" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
