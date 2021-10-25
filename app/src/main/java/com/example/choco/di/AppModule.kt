@@ -24,9 +24,4 @@ class AppModule {
         return Dispatchers.IO
     }
 
-//    @Provides
-//    fun provideSearchDataSource(apiService: ApiService): ReplacementSearchRepository {
-//        return ReplacementSearchRepository(apiService)
-//    }
-
 }

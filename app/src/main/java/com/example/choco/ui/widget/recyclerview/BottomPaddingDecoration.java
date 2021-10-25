@@ -1,4 +1,4 @@
-package com.example.choco.ui.widget;
+package com.example.choco.ui.widget.recyclerview;
 
 import android.graphics.Rect;
 import android.view.View;

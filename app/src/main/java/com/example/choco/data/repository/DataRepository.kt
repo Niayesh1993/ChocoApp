@@ -15,20 +15,6 @@ class DataRepository(private val remoteDataSource: DataSource) {
         return remoteDataSource.getProduct(token)
     }
 
-    private fun saveCookie(cookieResult: ApiResult<String>): ApiResult<String> {
-        if (cookieResult is ApiResult.Success) {
-            saveTokens(cookieResult.value)
-        }
-        return cookieResult
-    }
-
-    private fun saveTokens(token: String) {
-
-//        appPreferences.apply {
-//            accessToken = token
-//        }
-    }
-
     companion object {
         @Volatile
         private var INSTANCE: DataRepository? = null

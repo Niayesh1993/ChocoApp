@@ -1,12 +1,10 @@
 package com.example.choco.data.api
 
 import com.example.choco.BuildConfig
+import com.example.choco.R
 import com.example.choco.data.api.StatusCode.AUTHORIZATOIN_TIMEOUT
 import com.example.choco.data.api.StatusCode.UNAUTHORIZED
-import com.example.choco.utils.ApiError
-import com.example.choco.utils.ApiErrorResponse
-import com.example.choco.utils.ApiResult
-import com.example.choco.utils.JsonHelper
+import com.example.choco.utils.*
 import java.io.IOException
 import retrofit2.HttpException
 
@@ -72,24 +70,22 @@ object StatusCode {
 
 
     fun messageText(statusCode: Int): String {
-        return ""
-//        return when (statusCode) {
-//            BAD_REQUEST -> R.string.bad_request.stringRes()
-//            UNAUTHORIZED -> R.string.unauthorized.stringRes()
-//            FORBIDDEN -> R.string.forbidden.stringRes()
-//            NOT_FOUND -> R.string.not_found.stringRes()
-//            METHOD_NOT_ALLOWED -> R.string.method_not_allowed.stringRes()
-//            NOT_ACCEPTABLE -> R.string.not_acceptable.stringRes()
-//            TIMEOUT -> R.string.timeout.stringRes()
-//            UPDATE_REQUIRED -> R.string.update_required.stringRes()
-//            INTERNAL_SERVER_ERROR, BAD_GATEWAY, SERVICE_UNAVAILABLE, GATEWAY_TIMEOUT, INSUFFICIENT_STORAGE -> R.string.server_error.stringRes()
-//            NO_INTERNET_ACCESS -> R.string.no_internet_access.stringRes()
-//            AUTHORIZATOIN_TIMEOUT -> R.string.authorization_timeout.stringRes()
-//            else -> R.string.default_exception_msg.stringRes()
-//        }
+        return when (statusCode) {
+            BAD_REQUEST -> R.string.bad_request.stringRes()
+            UNAUTHORIZED -> R.string.unauthorized.stringRes()
+            FORBIDDEN -> R.string.forbidden.stringRes()
+            NOT_FOUND -> R.string.not_found.stringRes()
+            METHOD_NOT_ALLOWED -> R.string.method_not_allowed.stringRes()
+            NOT_ACCEPTABLE -> R.string.not_acceptable.stringRes()
+            TIMEOUT -> R.string.timeout.stringRes()
+            UPDATE_REQUIRED -> R.string.update_required.stringRes()
+            INTERNAL_SERVER_ERROR, BAD_GATEWAY, SERVICE_UNAVAILABLE, GATEWAY_TIMEOUT, INSUFFICIENT_STORAGE -> R.string.server_error.stringRes()
+            NO_INTERNET_ACCESS -> R.string.no_internet_access.stringRes()
+            AUTHORIZATOIN_TIMEOUT -> R.string.authorization_timeout.stringRes()
+            else -> R.string.default_exception_msg.stringRes()
+        }
     }
 }
 
 const val API_BASE_URL = BuildConfig.BASE_URL
-const val AUTH_BASE_URL = BuildConfig.BASE_URL
 const val IMAGE_BASE_URL = BuildConfig.BASE_URL

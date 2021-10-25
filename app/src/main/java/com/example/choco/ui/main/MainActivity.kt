@@ -5,7 +5,6 @@ import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.DefaultItemAnimator
-import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.choco.databinding.ActivityMainBinding
 import com.example.choco.ui.base.adapter.RecyclerAdapter
 import com.example.choco.utils.observeUiState
@@ -17,7 +16,7 @@ class MainActivity : AppCompatActivity() {
 
     private val viewModel: MainViewModel by viewModels()
     private val binding: ActivityMainBinding by viewBindings()
-    lateinit var adapter: RecyclerAdapter
+    private val adapter = RecyclerAdapter()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -25,10 +24,8 @@ class MainActivity : AppCompatActivity() {
 
         with(binding){
 
+            recycler.adapter = adapter
             recycler.itemAnimator = DefaultItemAnimator()
-            val layoutmanager = LinearLayoutManager(this@MainActivity)
-            recycler.layoutManager = layoutmanager
-
         }
         with(viewModel){
 
@@ -38,9 +35,7 @@ class MainActivity : AppCompatActivity() {
             })
 
             products.observe(this@MainActivity, Observer {
-                adapter = RecyclerAdapter(it!!, this@MainActivity)
-                binding.recycler.adapter = adapter
-                //adapter.insertItems(it!!)
+                adapter.insertItems(it!!)
             })
 
             loadProducts()

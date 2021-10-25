@@ -16,7 +16,7 @@ import dagger.hilt.android.AndroidEntryPoint
 class SplashActivity : AppCompatActivity() {
 
     private val binding: ActivitySplashBinding by viewBindings()
-    val SPLASH_TIME_OUT = 4000
+    val SPLASH_TIME_OUT = 2000
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -27,12 +27,10 @@ class SplashActivity : AppCompatActivity() {
         {
             val intent = Intent(this, MainActivity::class.java)
             navigateToNextActivity(intent)
-            finish()
         }else
         {
             val intent = Intent(this, LoginActivity::class.java)
             navigateToNextActivity(intent)
-            finish()
         }
 
 
@@ -41,6 +39,7 @@ class SplashActivity : AppCompatActivity() {
     fun navigateToNextActivity(intent: Intent) {
         Handler().postDelayed({
             startActivity(intent)
+            finish()
         }, SPLASH_TIME_OUT.toLong())
     }
 }
