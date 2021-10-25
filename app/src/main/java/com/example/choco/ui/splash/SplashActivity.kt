@@ -6,6 +6,9 @@ import android.os.Bundle
 import android.os.Handler
 import com.example.choco.databinding.ActivitySplashBinding
 import com.example.choco.ui.login.LoginActivity
+import com.example.choco.ui.main.MainActivity
+import com.example.choco.utils.Constants
+import com.example.choco.utils.SettingManager
 import com.example.choco.utils.viewbinding.viewBindings
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -18,10 +21,20 @@ class SplashActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding.loading.isEnabled = true
+        SettingManager.init(this)
 
-        val intent = Intent(this, LoginActivity::class.java)
-        navigateToNextActivity(intent)
-        finish()
+        if (SettingManager.hasValue(Constants().ACCESS_TOKEN))
+        {
+            val intent = Intent(this, MainActivity::class.java)
+            navigateToNextActivity(intent)
+            finish()
+        }else
+        {
+            val intent = Intent(this, LoginActivity::class.java)
+            navigateToNextActivity(intent)
+            finish()
+        }
+
 
     }
 

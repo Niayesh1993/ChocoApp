@@ -8,11 +8,13 @@ import com.example.choco.data.api.StatusCode.NOT_FOUND
 import com.example.choco.data.model.Product
 import com.example.choco.data.repository.DataRepository
 import com.example.choco.utils.*
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
+@HiltViewModel
 class MainViewModel @Inject constructor(
     private val dataRepository: DataRepository
 ) : ViewModel() {
@@ -45,10 +47,12 @@ class MainViewModel @Inject constructor(
     private fun updateProductList(response: ApiResult<ArrayList<Product>>) {
         if (response is ApiResult.Success) {
             _products.value = response.value
+            _uiState.update(loading = false)
         } else {
             if (response is ApiResult.Error &&
                 response.error?.code == NOT_FOUND) {
                 _products.value = null
+                _uiState.update(loading = false)
             } else {
                 _uiState.handleApiError(response)
             }

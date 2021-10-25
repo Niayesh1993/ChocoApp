@@ -3,7 +3,6 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:background="@color/colorPrimary"
     tools:context=".ui.main.MainActivity">
 
     <data>
@@ -46,12 +45,19 @@
 
         </androidx.appcompat.widget.Toolbar>
 
-        <com.example.choco.ui.widget.DynamicRecyclerView
+        <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recycler"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            app:layoutManager="@string/linear_layout_manager"
-            app:layout_behavior="@string/appbar_scrolling_view_behavior" />
+            android:layout_alignParentStart="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="13dp"
+            android:layout_marginLeft="13dp"
+            android:layout_marginTop="-6dp"
+            android:orientation="vertical"
+            app:layoutManager="LinearLayoutManager">
+        </androidx.recyclerview.widget.RecyclerView>
 
         <com.example.choco.ui.widget.StateLayout
             android:id="@+id/state_layout"

@@ -22,7 +22,7 @@
             android:padding="5dp">
 
             <ImageView
-                android:id="@+id/episode_item_image"
+                android:id="@+id/item_image"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
                 android:layout_marginEnd="4dp"
@@ -35,23 +35,23 @@
                 android:src="@drawable/image_icon"/>
 
             <ImageView
-                android:id="@+id/favorite_img"
+                android:id="@+id/order_img"
                 android:layout_width="30dp"
                 android:layout_height="30dp"
                 android:layout_marginEnd="108dp"
                 android:layout_marginRight="108dp"
                 android:scaleType="centerCrop"
                 android:src="@drawable/favorite"
-                app:layout_constraintBottom_toBottomOf="@id/episode_item_image"
-                app:layout_constraintEnd_toEndOf="@id/episode_item_image"
-                app:layout_constraintTop_toTopOf="@id/episode_item_image"
+                app:layout_constraintBottom_toBottomOf="@id/item_image"
+                app:layout_constraintEnd_toEndOf="@id/item_image"
+                app:layout_constraintTop_toTopOf="@id/item_image"
                 app:layout_constraintVertical_bias="1.0"
                 android:visibility="gone">
 
             </ImageView>
 
             <TextView
-                android:id="@+id/txt_title"
+                android:id="@+id/txt_name"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:padding="5dp"
@@ -60,7 +60,7 @@
                 android:textSize="12sp"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/episode_item_image"
+                app:layout_constraintEnd_toStartOf="@+id/item_image"
                 app:layout_constraintHorizontal_bias="1.0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
@@ -68,7 +68,7 @@
                 tools:text="Title" />
 
             <TextView
-                android:id="@+id/txt_author"
+                android:id="@+id/txt_price"
                 android:layout_width="164dp"
                 android:layout_height="wrap_content"
                 android:layout_margin="5dp"
@@ -78,10 +78,10 @@
                 android:textSize="11sp"
                 android:textStyle="normal"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/episode_item_image"
+                app:layout_constraintEnd_toStartOf="@+id/item_image"
                 app:layout_constraintHorizontal_bias="0.042"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@id/txt_title"
+                app:layout_constraintTop_toTopOf="@id/txt_name"
                 app:layout_constraintVertical_bias="0.486"
                 tools:text="Author" />
 

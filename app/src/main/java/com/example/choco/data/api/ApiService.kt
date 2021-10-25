@@ -16,6 +16,6 @@ interface ApiService {
 
 
 
-    @GET("/choco/products/{token}")
-    suspend fun getProducts(@Path("token") token: String): ArrayList<Product>
+    @GET("/choco/products")
+    suspend fun getProducts(@Query("token") token: String): ArrayList<Product>
 }
