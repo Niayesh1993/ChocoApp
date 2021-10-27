@@ -125,7 +125,6 @@ public final class HttpLoggingInterceptor implements Interceptor {
         ResponseBody responseBody = response.body();
         long contentLength = responseBody.contentLength();
         String bodySize = contentLength != -1 ? contentLength + "-byte" : "unknown-length";
-//        logger.log("responseBody:   " + responseBody.string());
         logger.log("<-- "
                 + response.code()
                 + (response.message().isEmpty() ? "" : ' ' + response.message())

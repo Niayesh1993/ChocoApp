@@ -1,59 +1,51 @@
 package com.example.choco.data.model
 
-import android.os.Parcel
-import android.os.Parcelable
-import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName
 
-class Product() : Parcelable {
+class Product() {
 
     @SerializedName("Id")
-    @Expose
-    var id: String = ""
+    private val id: String = ""
 
     @SerializedName("name")
-    @Expose
-    var name: String = ""
+    private val name: String = ""
 
     @SerializedName("Description")
-    @Expose
-    var description: String = ""
+    private val description: String = ""
 
     @SerializedName("price")
-    @Expose
-    var price: String = ""
+    private val price: String = ""
 
     @SerializedName("photo")
-    @Expose
-    var photo: String = ""
+    private val photo: String = ""
 
-    var order: Boolean = false
+    private var order: Boolean = false
 
-    constructor(parcel: Parcel) : this() {
-        id = parcel.readString().toString()
-        name = parcel.readString().toString()
-        description = parcel.readString().toString()
-        price = parcel.readString().toString()
-        photo = parcel.readString().toString()
-        order = parcel.readByte() != 0.toByte()
+    fun getId(): String {
+        return id
     }
 
-
-    override fun describeContents(): Int {
-        TODO("Not yet implemented")
+    fun getName(): String {
+        return name
     }
 
-    override fun writeToParcel(dest: Parcel?, flags: Int) {
-        TODO("Not yet implemented")
+    fun getDesc(): String {
+        return description
     }
 
-    companion object CREATOR : Parcelable.Creator<Product> {
-        override fun createFromParcel(parcel: Parcel): Product {
-            return Product(parcel)
-        }
+    fun getPrice(): String {
+        return price
+    }
+    fun getPhoto(): String {
+        return photo
+    }
 
-        override fun newArray(size: Int): Array<Product?> {
-            return arrayOfNulls(size)
-        }
+    fun getOrder(): Boolean {
+        return order
+    }
+
+    fun setOrder(status: Boolean)
+    {
+        this.order = status
     }
 }

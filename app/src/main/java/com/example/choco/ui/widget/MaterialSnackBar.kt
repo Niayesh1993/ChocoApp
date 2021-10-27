@@ -1,4 +1,4 @@
-package com.example.choco_app.ui.widget
+package com.example.choco.ui.widget
 
 import android.view.LayoutInflater
 import android.view.View

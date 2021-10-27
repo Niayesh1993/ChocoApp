@@ -1,17 +1,12 @@
 package com.example.choco.data.repository
 
-import com.example.choco.data.model.Login
-import com.example.choco.data.model.LoginResult
 import com.example.choco.data.model.Product
-import com.example.choco.utils.ApiResult
+import com.example.choco.utils.Result
 
-class DataRepository(private val remoteDataSource: DataSource) {
+class MainRepository(private val remoteDataSource: DataSource) {
 
-    suspend fun login(login: Login): ApiResult<LoginResult> {
-        return remoteDataSource.login(login)
-    }
 
-    suspend fun getProducts(token: String): ApiResult<ArrayList<Product>> {
+    suspend fun getProducts(token: String): Result<ArrayList<Product>> {
         return remoteDataSource.getProduct(token)
     }
 
@@ -31,12 +26,12 @@ class DataRepository(private val remoteDataSource: DataSource) {
 
     companion object {
         @Volatile
-        private var INSTANCE: DataRepository? = null
+        private var INSTANCE: MainRepository? = null
 
-        fun getInstance(remoteDataSource: DataSource): DataRepository {
+        fun getInstance(remoteDataSource: DataSource): MainRepository {
             return INSTANCE ?: synchronized(this) {
                 INSTANCE
-                    ?: DataRepository(remoteDataSource
+                    ?: MainRepository(remoteDataSource
                     ).also { INSTANCE = it }
             }
         }

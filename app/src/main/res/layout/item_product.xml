@@ -30,25 +30,38 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.0" />
+
+            <ImageButton
+                android:id="@+id/btn_add"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:src="@drawable/ic_add"
+                app:layout_constraintTop_toBottomOf="@+id/item_image"
+                tools:layout_editor_absoluteX="326dp"
+                android:padding="5dp"
+                android:textSize="11sp"
+                android:textStyle="normal"
+                app:layout_constraintBottom_toBottomOf="parent"
+                tools:ignore="MissingConstraints">
+
+            </ImageButton>
+
+            <ImageButton
+                android:id="@+id/btn_remove"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:padding="5dp"
+                android:src="@drawable/ic_remove"
+                android:textSize="11sp"
+                android:textStyle="normal"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/item_image"
                 app:layout_constraintVertical_bias="0.0"
-                android:layout_marginRight="4dp"
-                android:src="@drawable/image_icon"/>
+                tools:ignore="MissingConstraints"
+                tools:layout_editor_absoluteX="282dp">
 
-            <ImageView
-                android:id="@+id/order_img"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:layout_marginEnd="108dp"
-                android:layout_marginRight="108dp"
-                android:scaleType="centerCrop"
-                android:src="@drawable/favorite"
-                app:layout_constraintBottom_toBottomOf="@id/item_image"
-                app:layout_constraintEnd_toEndOf="@id/item_image"
-                app:layout_constraintTop_toTopOf="@id/item_image"
-                app:layout_constraintVertical_bias="1.0"
-                android:visibility="gone">
-
-            </ImageView>
+            </ImageButton>
 
             <TextView
                 android:id="@+id/txt_name"

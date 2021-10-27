@@ -6,7 +6,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.choco.data.api.StatusCode.NOT_FOUND
 import com.example.choco.data.model.Product
-import com.example.choco.data.repository.DataRepository
+import com.example.choco.data.repository.MainRepository
 import com.example.choco.utils.*
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
@@ -16,7 +16,7 @@ import javax.inject.Inject
 
 @HiltViewModel
 class MainViewModel @Inject constructor(
-    private val dataRepository: DataRepository
+    private val mainRepository: MainRepository
 ) : ViewModel() {
 
     private val _uiState = MutableLiveData<UiStateModel>()
@@ -35,7 +35,7 @@ class MainViewModel @Inject constructor(
         _uiState.update(loading = true)
         viewModelScope.launch {
             val productList = withContext(Dispatchers.Default) {
-                dataRepository.getProducts(SettingManager.getString(Constants().ACCESS_TOKEN).toString())
+                mainRepository.getProducts(SettingManager.getString(Constants().ACCESS_TOKEN).toString())
             }
 
             _uiState.update(loading = false)
@@ -44,12 +44,12 @@ class MainViewModel @Inject constructor(
         }
     }
 
-    private fun updateProductList(response: ApiResult<ArrayList<Product>>) {
-        if (response is ApiResult.Success) {
+    private fun updateProductList(response: Result<ArrayList<Product>>) {
+        if (response is Result.Success) {
             _products.value = response.value
             _uiState.update(loading = false)
         } else {
-            if (response is ApiResult.Error &&
+            if (response is Result.Error &&
                 response.error?.code == NOT_FOUND) {
                 _products.value = null
                 _uiState.update(loading = false)

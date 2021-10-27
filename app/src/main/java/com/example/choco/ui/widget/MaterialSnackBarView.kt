@@ -1,4 +1,4 @@
-package com.example.choco_app.ui.widget
+package com.example.choco.ui.widget
 
 import android.animation.AnimatorSet
 import android.animation.ObjectAnimator

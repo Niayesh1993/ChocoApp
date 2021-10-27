@@ -7,7 +7,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Observer
-import com.example.choco_app.ui.widget.MaterialSnackBar
+import com.example.choco.ui.widget.MaterialSnackBar
 import com.example.choco.R
 
 fun AppCompatActivity.observeUiState(uiStateModel: LiveData<UiStateModel>) {
@@ -40,12 +40,12 @@ fun MutableLiveData<UiStateModel>.update(loading: Boolean = false,
     }
 }
 
-fun <T> MutableLiveData<UiStateModel>.handleApiError(response: ApiResult<T>) {
-    if (response is ApiResult.Error) {
+fun <T> MutableLiveData<UiStateModel>.handleApiError(response: Result<T>) {
+    if (response is Result.Error) {
         update(error = Event(response.error ?: ApiError()))
     }
 
-    if (response is ApiResult.NetworkError) {
+    if (response is Result.NetworkError) {
         update(toast = Event(R.string.no_internet_access.toString()))
     }
 }
@@ -53,7 +53,7 @@ fun <T> MutableLiveData<UiStateModel>.handleApiError(response: ApiResult<T>) {
 fun updateUiState(uiModel: UiStateModel, activity: Activity) {
 
     uiModel.error?.getContentIfNotHandled()?.apply {
-        //updateErrorState(this, activity)
+
     }
 
     uiModel.toast?.getContentIfNotHandled()?.apply {

@@ -79,7 +79,7 @@ object MessageViewer {
         }
         (view.findViewById<View>(R.id.content_text_view) as TextView).text = content
         val cancelButton = view.findViewById<Button>(R.id.cancel_button)
-        if (!InputHelper.isEmpty(cancelBtnTxt)) {
+        if (cancelBtnTxt!!.isNotEmpty()) {
             cancelButton.text = cancelBtnTxt
         }
         cancelButton.setOnClickListener { v: View? ->
@@ -87,7 +87,7 @@ object MessageViewer {
             clickListener?.cancelBtnClicked()
         }
         val okButton = view.findViewById<Button>(R.id.btn_ok)
-        if (InputHelper.isEmpty(okBtnTxt)) {
+        if (okBtnTxt!!.isEmpty()) {
             okBtnTxt = activity.getString(R.string.ok)
         }
         okButton.text = okBtnTxt

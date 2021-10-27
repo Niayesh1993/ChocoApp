@@ -11,12 +11,12 @@ import java.io.IOException
 import retrofit2.HttpException
 
 
-suspend fun <T> safeApiCall(apiCall: suspend () -> T): ApiResult<T> {
+suspend fun <T> safeApiCall(apiCall: suspend () -> T): Result<T> {
     return try {
-        ApiResult.Success(apiCall.invoke())
+        Result.Success(apiCall.invoke())
     } catch (throwable: Throwable) {
         when (throwable) {
-            is IOException -> ApiResult.NetworkError
+            is IOException -> Result.NetworkError
             is HttpException -> {
                 val code = throwable.code()
                 var errorResponse: ApiError? = convertErrorBody(throwable)
@@ -27,10 +27,10 @@ suspend fun <T> safeApiCall(apiCall: suspend () -> T): ApiResult<T> {
                     errorResponse.widget = ApiError.Widget.DIALOG_BOX
                 }
                 errorResponse.code = code
-                ApiResult.Error(errorResponse)
+                Result.Error(errorResponse)
             }
             else -> {
-                ApiResult.Error(null)
+                Result.Error(null)
             }
         }
     }

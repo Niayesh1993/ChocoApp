@@ -7,7 +7,7 @@ import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.widget.doAfterTextChanged
 import androidx.lifecycle.Observer
-import com.example.choco_app.ui.widget.MaterialSnackBar
+import com.example.choco.ui.widget.MaterialSnackBar
 import com.example.choco.databinding.ActivityLoginBinding
 import com.example.choco.di.MediaApplication
 import com.example.choco.ui.main.MainActivity
@@ -50,7 +50,7 @@ class LoginActivity : AppCompatActivity() {
         }
 
         binding.loginBtn.setOnClickListener {
-            viewModel.login(binding.username, binding.password)
+            viewModel.login(binding.username.text.toString(), binding.password.text.toString())
         }
 
 

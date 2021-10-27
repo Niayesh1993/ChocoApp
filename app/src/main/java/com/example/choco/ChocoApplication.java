@@ -9,7 +9,7 @@ import dagger.hilt.android.HiltAndroidApp;
 @HiltAndroidApp
 public class MediaApplication extends MultiDexApplication {
 
-    public static Context mContext;
+    private static Context mContext;
     @Override
     public void onCreate() {
         super.onCreate();
