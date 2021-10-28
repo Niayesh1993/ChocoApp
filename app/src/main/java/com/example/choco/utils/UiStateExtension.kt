@@ -40,12 +40,12 @@ fun MutableLiveData<UiStateModel>.update(loading: Boolean = false,
     }
 }
 
-fun <T> MutableLiveData<UiStateModel>.handleApiError(response: Result<T>) {
-    if (response is Result.Error) {
+fun <T> MutableLiveData<UiStateModel>.handleApiError(response: ApiResult<T>) {
+    if (response is ApiResult.Error) {
         update(error = Event(response.error ?: ApiError()))
     }
 
-    if (response is Result.NetworkError) {
+    if (response is ApiResult.NetworkError) {
         update(toast = Event(R.string.no_internet_access.toString()))
     }
 }

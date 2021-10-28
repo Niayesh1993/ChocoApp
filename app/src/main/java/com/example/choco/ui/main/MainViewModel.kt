@@ -25,12 +25,6 @@ class MainViewModel @Inject constructor(
     private val _products = MutableLiveData<ArrayList<Product>?>()
     val products: LiveData<ArrayList<Product>?> get() = _products
 
-    private val _notifyItemUpdate = MutableLiveData<Event<Int>>()
-    val notifyItemUpdate: LiveData<Event<Int>> get() = _notifyItemUpdate
-
-    private val _updateItemState = MutableLiveData<UiStateModel>()
-    val updateItemState: LiveData<UiStateModel> get() = _updateItemState
-
     fun loadProducts() {
         _uiState.update(loading = true)
         viewModelScope.launch {
@@ -44,12 +38,12 @@ class MainViewModel @Inject constructor(
         }
     }
 
-    private fun updateProductList(response: Result<ArrayList<Product>>) {
-        if (response is Result.Success) {
+    private fun updateProductList(response: ApiResult<ArrayList<Product>>) {
+        if (response is ApiResult.Success) {
             _products.value = response.value
             _uiState.update(loading = false)
         } else {
-            if (response is Result.Error &&
+            if (response is ApiResult.Error &&
                 response.error?.code == NOT_FOUND) {
                 _products.value = null
                 _uiState.update(loading = false)

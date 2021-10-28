@@ -12,7 +12,7 @@ internal object ImageLoader {
     fun loadImageWithCircularCrop(context: Context, url: String, imageView: ImageView) {
         Glide.with(context)
             .load(url)
-            .error(R.drawable.image_icon)
+            .error(R.drawable.bg_no_image)
             .apply(RequestOptions.circleCropTransform())
             .transition(withCrossFade())
             .into(imageView)

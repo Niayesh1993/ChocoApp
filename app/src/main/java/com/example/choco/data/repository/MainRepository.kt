@@ -1,12 +1,12 @@
 package com.example.choco.data.repository
 
 import com.example.choco.data.model.Product
-import com.example.choco.utils.Result
+import com.example.choco.utils.ApiResult
 
 class MainRepository(private val remoteDataSource: DataSource) {
 
 
-    suspend fun getProducts(token: String): Result<ArrayList<Product>> {
+    suspend fun getProducts(token: String): ApiResult<ArrayList<Product>> {
         return remoteDataSource.getProduct(token)
     }
 

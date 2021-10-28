@@ -41,7 +41,7 @@ class LoginViewModel @Inject constructor(
             val response = loginRepository.login(login)
             withContext(Dispatchers.Main) {
 
-                if (response is Result.Success)
+                if (response is ApiResult.Success)
                 {
                     _proceedToApp.value = Event(true)
                 }

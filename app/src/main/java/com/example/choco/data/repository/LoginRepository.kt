@@ -1,25 +1,25 @@
 package com.example.choco.data.repository
 
-import com.example.choco.ChocoApplication
 import com.example.choco.data.model.Login
 import com.example.choco.data.model.LoginResult
-import com.example.choco.utils.Result
+import com.example.choco.di.ChocoApplication
+import com.example.choco.utils.ApiResult
 import com.example.choco.utils.Constants
 import com.example.choco.utils.SettingManager
 
 class LoginRepository(private val remoteDataSource: DataSource) {
 
-    suspend fun login(login: Login): Result<LoginResult> {
+    suspend fun login(login: Login): ApiResult<LoginResult> {
         return remoteDataSource.login(login).apply {
             saveToken(this)
         }
     }
 
-    private fun saveToken(result: Result<LoginResult>) {
-        if (result is Result.Success)
+    private fun saveToken(apiResult: ApiResult<LoginResult>) {
+        if (apiResult is ApiResult.Success)
         {
             SettingManager.init(ChocoApplication.getContext())
-            val token = result.value.token
+            val token = apiResult.value.token
                 SettingManager.setValue(Constants().ACCESS_TOKEN, token)
         }
     }

@@ -7,7 +7,7 @@ import androidx.multidex.MultiDexApplication;
 import dagger.hilt.android.HiltAndroidApp;
 
 @HiltAndroidApp
-public class MediaApplication extends MultiDexApplication {
+public class ChocoApplication extends MultiDexApplication {
 
     private static Context mContext;
     @Override
